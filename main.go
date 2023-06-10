@@ -130,7 +130,7 @@ func main() {
 func home(c echo.Context) error {
 	data, _ := connection.Conn.Query(context.Background(), "SELECT id, name, start_date, end_date, description, technologies, image FROM tb_projects")
 
-	var result = []Project{}
+	var result []Project
 	for data.Next() {
 		var each = Project{}
 
