@@ -191,53 +191,47 @@
 									>{{$data.ProjectName}}</a
 								>
 							</h5>
-							<p class="card-text durasi-card">
-								<!-- {{$data.StartDate}} | {{$data.EndDate}} -->
-								<!-- {{$data.FormatDate}} -->
-							</p>
-							<!-- <p class="card-text">{{$data.Description}}</p> -->
+							<p class="card-text durasi-card">Durasi : {{$data.Duration}}</p>
+							<p class="card-text">{{$data.Description}}</p>
 							<div class="icon-linked-app pt-3">
 								<div class="nodejs">
-									<!-- {{if $data.Tech1}}
+									{{if $data.Tech1}}
 									<img
 										src="public/img/Node JS.png"
 										alt="gambar-node"
 										class="gambar-node icon-project"
 									/>
-									{{end}} -->
+									{{end}}
 								</div>
 								<div class="nextjs">
-									<!-- {{if $data.Tech2}}
+									{{if $data.Tech2}}
 									<img
 										src="public/img/nextjs.png"
 										alt="gambar-next"
 										class="gambar-next icon-project"
 									/>
-									{{end}} -->
-									<!-- {{$data.Tech2}} -->
+									{{end}}
 								</div>
 								<div class="reactjs">
-									<!-- {{if $data.Tech3}}
+									{{if $data.Tech3}}
 									<img
 										src="public/img/reactjs.png"
 										alt="gambar-react"
 										class="gambar-react icon-project"
 									/>
-									{{end}} -->
-									<!-- {{$data.Tech3}} -->
+									{{end}}
 								</div>
 								<div class="typescript">
-									<!-- {{if $data.Tech4}}
+									{{if $data.Tech4}}
 									<img
 										src="public/img/ts.png"
 										alt="gambar-type"
 										class="gambar-type icon-project"
 									/>
-									{{end}} -->
-									<!-- {{$data.Tech4}} -->
-									<!-- {{$data.Technologies}} | {{$data.Image}} -->
+									{{end}}
 								</div>
 							</div>
+							<div class="gambar-db mt-4">{{$data.Image}}</div>
 							<div class="container-button d-flex flex-row mt-5">
 								<a
 									href="update-project/{{$index}}"

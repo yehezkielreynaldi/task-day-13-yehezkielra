@@ -25,6 +25,8 @@ type Project struct {
 	Tech2        bool
 	Tech3        bool
 	Tech4        bool
+	FormatStart  string
+	FormatEnd    string
 }
 
 var dataProject = []Project{
@@ -128,23 +130,28 @@ func main() {
 }
 
 func home(c echo.Context) error {
-	data, _ := connection.Conn.Query(context.Background(), "SELECT id, name, start_date, end_date, description, technologies, image FROM tb_projects")
+	data, _ := connection.Conn.Query(context.Background(), "SELECT id, name, start_date, end_date, duration, description, tech1, tech2, tech3, tech4, image FROM tb_proyek")
 
+	fmt.Println(data)
 	var result []Project
 	for data.Next() {
 		var each = Project{}
 
-		err := data.Scan(&each.Id, &each.ProjectName, &each.StartDate, &each.EndDate, &each.Description, &each.Technologies, &each.Image)
+		err := data.Scan(&each.Id, &each.ProjectName, &each.StartDate, &each.EndDate, &each.Duration, &each.Description, &each.Tech1, &each.Tech2, &each.Tech3, &each.Tech4, &each.Image)
 		if err != nil {
 			fmt.Println(err.Error())
 			return c.JSON(http.StatusInternalServerError, map[string]string{"Message": err.Error()})
 		}
+		fmt.Println(each)
 
-		// each.FormatDate = each.PostDate.Format("2 January 2006")
+		each.FormatStart = each.StartDate.Format("2 January 2006")
+		each.FormatEnd = each.EndDate.Format("2 January 2006")
 		// each.Author = "Abel Dustin"
 
 		result = append(result, each)
 	}
+
+	fmt.Println(result)
 
 	projects := map[string]interface{}{
 		"Projects": result,
